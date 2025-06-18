@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jasa Interior - Contact Us</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #FDF6F0; 
+      color: #5B3924;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D97540; 
+      text-decoration: none;
+    }
+    nav.navbar {
+      background: rgba(253, 231, 221, 0.95);
+      backdrop-filter: saturate(180%) blur(15px);
+      box-shadow: 0 2px 8px rgba(217, 117, 64, 0.15);
+      margin-bottom: 40px;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #A75628;
+      transition: color 0.3s ease;
+    }
+    .navbar-brand:hover {
+      color: #D97540;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      color: #B97552;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-item.active .nav-link {
+      color: #D97540;
+      font-weight: 700;
+    }
+    .navbar-toggler {
+      border: none;
+      color: #D97540;
+      font-size: 28px;
+    }
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    header.page-header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #E7C9B1, #D37523);
+      color: #fff8f0;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+      user-select: none;
+    }
+    header.page-header h1 {
+      font-size: 3.4rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-shadow: 0 3px 15px rgba(163, 83, 34, 0.85);
+    }
+    header.page-header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(163, 75, 10, 0.75);
+    }
+    .contact-container {
+      max-width: 600px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+    form {
+      background: #fff5eb;
+      padding: 30px 24px;
+      border-radius: 20px;
+      box-shadow: 0 6px 30px rgba(217, 117, 64, 0.15);
+    }
+    .form-group label {
+      font-weight: 600;
+      color: #9e6b3f;
+    }
+    .form-control {
+      border-radius: 10px;
+      border: 1.8px solid #d97540;
+      padding: 12px 15px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: #b65a1c;
+      box-shadow: 0 0 8px rgba(182, 90, 28, 0.45);
+      outline: none;
+    }
+    .form-control.is-invalid {
+      border-color: #d9534f;
+      background-color: #f9e6e6;
+      box-shadow: none;
+    }
+    .invalid-feedback {
+      font-size: 0.9rem;
+      color: #d9534f;
+      margin-top: 6px;
+      user-select: none;
+    }
+    button[type="submit"] {
+      background: linear-gradient(135deg, #D97540, #B65A1C);
+      border: none;
+      padding: 14px 48px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #fff8f0;
+      box-shadow: 0 8px 30px rgba(217, 117, 64, 0.6);
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-top: 20px;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: linear-gradient(135deg, #B65A1C, #F78143);
+      box-shadow: 0 12px 50px rgba(247, 129, 67, 0.85);
+      outline: none;
+      transform: translateY(-3px);
+    }
+    button[type="submit"]:active {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(217, 90, 30, 0.9);
+    }
+    @media (max-width: 768px) {
+      header.page-header h1 {
+        font-size: 2.6rem;
+      }
+      header.page-header p {
+        font-size: 1.1rem;
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation" aria-label="Main navigation">
+    <a class="navbar-brand" href="index.html">InterMade</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="material-icons">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" role="menubar">
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="index.html" role="menuitem">Home</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="services.html" role="menuitem">Services</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="products.html" role="menuitem">Products</a>
+        </li>
+        <li class="nav-item active" role="none">
+          <a class="nav-link" href="contact.html" role="menuitem" aria-current="page">Contact</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="about.html" role="menuitem">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <header class="page-header">
+    <h1>Contact Us</h1>
+    <p>Reach out to Jasa Interior for warm, harmonious design consultations.</p>
+  </header>
+  <section class="contact-container" aria-label="Contact form">
+    <form id="contactForm" novalidate>
+      <div class="form-group">
+        <label for="name">Name <span aria-hidden="true">*</span></label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          minlength="5"
+          maxlength="20"
+          required
+          aria-describedby="nameHelp"
+          aria-invalid="false"
+          placeholder="Your name"
+        />
+        <div class="invalid-feedback" id="nameHelp">Nama harus antara 5 dan 20 karakter.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span aria-hidden="true">*</span></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          required
+          aria-describedby="emailHelp"
+          aria-invalid="false"
+          placeholder="you@example.com"
+        />
+        <div class="invalid-feedback" id="emailHelp">Silakan masukkan alamat email yang valid.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password <span aria-hidden="true">*</span></label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          required
+          aria-describedby="passwordHelp"
+          aria-invalid="false"
+          placeholder="Enter password"
+        />
+        <div class="invalid-feedback" id="passwordHelp">
+          Kata sandi harus minimal 8 karakter, mengandung huruf besar dan kecil, dan menyertakan angka.
+        </div>
+      </div>
+
+      <button type="submit" aria-label="Submit contact form">Submit</button>
+    </form>
+  </section>
+  <footer>
+    <p>&copy; 2025 <a href="index.html">InterMade</a>. All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    (function () {
+      const form = document.getElementById('contactForm');
+      const nameInput = form.name;
+      const emailInput = form.email;
+      const passwordInput = form.password;
+
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+      function showError(input, message) {
+        input.classList.add('is-invalid');
+        input.setAttribute('aria-invalid', 'true');
+      }
+
+      function clearError(input) {
+        input.classList.remove('is-invalid');
+        input.setAttribute('aria-invalid', 'false');
+      }
+
+      form.addEventListener('submit', function (e) {
+        let valid = true;
+
+        if (!nameInput.value.trim() || nameInput.value.trim().length < 5 || nameInput.value.trim().length > 20) {
+          showError(nameInput);
+          valid = false;
+        } else {
+          clearError(nameInput);
+        }
+        if (!emailInput.checkValidity()) {
+          showError(emailInput);
+          valid = false;
+        } else {
+          clearError(emailInput);
+        }
+        if (!passwordRegex.test(passwordInput.value)) {
+          showError(passwordInput);
+          valid = false;
+        } else {
+          clearError(passwordInput);
+        }
+
+        if (!valid) {
+          e.preventDefault();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

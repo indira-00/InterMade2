@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InterMade - Products</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+    --warm-bg: #f2e8dd;
+    --warm-accent1: #d9822b;
+    --warm-accent2: #a64b2a;
+    --text-primary: #442c1a;
+    --text-secondary: #6b4c32;
+    --glass-bg: rgba(255 248 240 / 0.75);
+    --glass-border: rgba(169 110 44 / 0.25);
+    --header-footer-bg: rgba(217 168 105 / 0.85);
+    --table-header-bg: #d9822b;
+    --shadow-light: rgba(169, 110, 44, 0.2);
+    --focus-outline: #d9822b;
+    }
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: 1.1px;
+  }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #FDF6F0;
+      color: #5B3924; 
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D97540; 
+      text-decoration: none;
+    }
+
+    nav.navbar {
+      background: rgba(253, 231, 221, 0.95);
+      backdrop-filter: saturate(180%) blur(15px);
+      box-shadow: 0 2px 8px rgba(217, 117, 64, 0.15);
+      margin-bottom: 40px;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #A75628;
+      transition: color 0.3s ease;
+    }
+    .navbar-brand:hover {
+      color: #D97540;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      color: #B97552;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-item.active .nav-link {
+      color: #D97540;
+      font-weight: 700;
+    }
+    .navbar-toggler {
+      border: none;
+      color: #D97540;
+      font-size: 28px;
+    }
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    header.page-header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #E7C9B1, #D37523);
+      color: #fff8f0;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+      user-select: none;
+    }
+    header.page-header h1 {
+      font-size: 3.4rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-shadow: 0 3px 15px rgba(163, 83, 34, 0.85);
+    }
+    header.page-header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(163, 75, 10, 0.75);
+    }
+    .products-grid {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      padding: 0 20px;
+    }
+    .product-card {
+      background: #F5E9E2;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(217, 117, 64, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      color: #5B3924;
+      user-select: none;
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 80px rgba(217, 117, 64, 0.3);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-title {
+      font-weight: 900;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: #A75628;
+      transition: color 0.3s ease;
+    }
+    .product-card:hover .product-title {
+      color: #D97540;
+    }
+    .product-description {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      flex-grow: 1;
+      color: #6b4b31;
+    }
+    .product-price {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #B97552;
+      margin-bottom: 12px;
+    }
+    .product-more-info {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      color: #7d5a39;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+    .product-card:hover .product-more-info,
+    .product-card:focus-within .product-more-info {
+      max-height: 180px;
+      opacity: 1;
+    }
+    main {
+    flex-grow: 1;
+    min-height: calc(100vh - 124px);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+  .table-wrapper {
+    width: 100%;
+    max-width: 960px;
+    background: rgba(255 248 240 / 0.75);
+    border-radius: 16px;
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(169 110 44 / 0.25);
+    box-shadow: 0 12px 36px rgba(169, 110, 44, 0.2);
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 600px;
+  }
+  thead tr {
+    background: var(--table-header-bg);
+    color: #fff;
+    font-weight: 700;
+  }
+  thead th {
+    text-align: left;
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: inset 0 -2px 0 0 rgba(0,0,0,0.15);
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0d9b5;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  tbody tr:hover,
+  tbody tr:focus-within {
+    background-color: #fbdba0;
+    box-shadow: 0 3px 12px rgba(217, 130, 43, 0.35);
+    outline: none;
+  }
+  tbody td {
+    padding: 16px 24px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+  }
+  tbody td:first-child,
+  thead th:first-child {
+    position: sticky;
+    left: 0;
+    background: rgba(255 248 240 / 0.75);
+    box-shadow: inset 2px 0 5px -2px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+  }
+  .material-icons {
+    vertical-align: middle;
+    font-size: 20px;
+    color: var(--warm-accent2);
+    margin-right: 6px;
+  }
+  tbody tr:focus-within {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: -2px;
+  }
+  tbody tr:focus-within td:first-child {
+    background-color: #f0b03c;
+    color: #fff;
+  }
+  @media (max-width: 1024px) {
+    nav.desktop-nav {
+      display: none;
+    }
+    .mobile-menu-btn {
+      display: inline-block;
+    }
+  }
+  @media (max-width: 640px) {
+    main {
+      padding: 1rem;
+    }
+    .table-wrapper {
+      border-radius: 12px;
+      box-shadow: 0 8px 24px var(--shadow-light);
+    }
+    table {
+      min-width: 100px;
+    }
+    thead th, tbody td {
+      padding: 20px 15px;
+    }
+    tbody td:first-child {
+      font-weight: 600;
+      background: var(--warm-accent2);
+      color: white;
+      position: relative;
+    }
+  }
+    footer {
+      background: #D97540;
+      padding: 28px 0;
+      color: #FFF6ED;
+      text-align: center;
+      font-size: 1rem;
+      user-select: none;
+      letter-spacing: 0.03em;
+    }
+    footer a {
+      color: #FFF6ED;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    footer a:hover {
+      color: #FFE5C4;
+    }
+    @media (max-width: 768px) {
+      header.page-header h1 {
+        font-size: 2.6rem;
+      }
+      header.page-header p {
+        font-size: 1.1rem;
+        max-width: 90%;
+      }
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .product-image {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation" aria-label="Main navigation">
+    <a class="navbar-brand" href="index.html">InterMade</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="material-icons">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" role="menubar">
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="index.html" role="menuitem">Home</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="services.html" role="menuitem">Services</a>
+        </li>
+        <li class="nav-item active" role="none">
+          <a class="nav-link" href="products.html" role="menuitem" aria-current="page">Products</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="contact.html" role="menuitem">Contact</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="about.html" role="menuitem">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <header class="page-header">
+    <h1>Our Featured Products</h1>
+    <p>Beautiful, warm, and functional pieces handpicked to complement your interior spaces.</p>
+  </header>
+  <section class="products-grid" aria-label="Interior products list">
+    <article tabindex="0" class="product-card" aria-describedby="prod1-desc">
+      <img
+        src="c:\Users\user\Pictures\sofa.jpg"
+        alt="Elegant sofa with warm-toned upholstery"
+        class="product-image"
+        loading="lazy"
+      />
+      <div class="product-content">
+        <h2 class="product-title">Elegant Sofa</h2>
+        <p class="product-description">Comfortable sofa crafted with warm earth tones and soft textures to create a cozy living room.</p>
+        <p class="product-price">Rp 5.500.000</p>
+        <p id="prod1-desc" class="product-more-info">Terbuat dari kain premium dan rangka kayu keras, sofa kami memadukan gaya dengan daya tahan. Sempurna untuk acara kumpul keluarga dan saat bersantai.</p>
+      </div>
+    </article>
+    <article tabindex="0" class="product-card" aria-describedby="prod2-desc">
+      <img
+        src="c:\Users\user\Pictures\dining.jpg"
+        alt="Solid wood dining table with warm finish"
+        class="product-image"
+        loading="lazy"
+      />
+      <div class="product-content">
+        <h2 class="product-title">Wooden Dining Table</h2>
+        <p class="product-description">Handcrafted dining table with natural wood grain and a warm finish for friends and family meals.</p>
+        <p class="product-price">Rp 8.250.000</p>
+        <p id="prod2-desc" class="product-more-info">Meja makan ini terbuat dari kayu berkelanjutan, dipoles secara ahli untuk meningkatkan kehangatan dan keindahan alami.</p>
+      </div>
+    </article>
+    <article tabindex="0" class="product-card" aria-describedby="prod3-desc">
+      <img
+        src="c:\Users\user\Downloads\cozy.jpg"
+        alt="Cozy armchair with cushioned seating in warm colors"
+        class="product-image"
+        loading="lazy"
+      />
+      <div class="product-content">
+        <h2 class="product-title">Cozy Armchair</h2>
+        <p class="product-description">Relax in style with our armchair featuring cushioned seating and inviting warm hues.</p>
+        <p class="product-price">Rp 3.750.000</p>
+        <p id="prod3-desc" class="product-more-info">Sempurna untuk sudut membaca atau pagi yang tenang, kursi berlengan ini menawarkan kenyamanan dan desain warna hangat yang abadi.</p>
+      </div>
+    </article>
+    <article tabindex="0" class="product-card" aria-describedby="prod4-desc">
+      <img
+        src="c:\Users\user\Pictures\lamp.jpg"
+        alt="Decorative lamp with warm orange light"
+        class="product-image"
+        loading="lazy"
+      />
+      <div class="product-content">
+        <h2 class="product-title">Decorative Lamp</h2>
+        <p class="product-description">Add a soft, warm glow to your room with this stylish decorative lamp.</p>
+        <p class="product-price">Rp 1.200.000</p>
+        <p id="prod4-desc" class="product-more-info">Dengan alas yang dibuat tangan dan bohlam cahaya yang hangat, lampu ini menghadirkan suasana dan kehangatan ke ruangan mana pun.</p>
+      </div>
+    </article>
+    <article tabindex="0" class="product-card" aria-describedby="prod5-desc">
+      <img
+        src="c:\Users\user\Pictures\bookshelf.jpg"
+        alt="Wooden bookshelf with warm finish"
+        class="product-image"
+        loading="lazy"
+      />
+      <div class="product-content">
+        <h2 class="product-title">Wooden Bookshelf</h2>
+        <p class="product-description">Organize your books and decor in a stylish warm wooden bookshelf.</p>
+        <p class="product-price">Rp 4.100.000</p>
+        <p id="prod5-desc" class="product-more-info">Dibuat dari kayu berkualitas tinggi dengan finishing hangat yang nyaman, rak buku ini sangat cocok di ruang yang nyaman.</p>
+      </div>
+    </article>
+  </section>
+  <main>
+    <section aria-label="Interior Products Table" class="table-wrapper">
+      <table role="table" aria-describedby="table-desc" tabindex="0">
+        <thead>
+          <tr>
+            <th scope="col">Nama Produk</th>
+            <th scope="col">Harga Produk</th>
+            <th scope="col">Bahan Bahan Produk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">weekend</span>Sofa Minimalis</td>
+            <td>Rp 4.500.000</td>
+            <td>Kayu jati, Kain beludru, Busa berkualitas</td>
+          </tr>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">book</span>Rak Buku</td>
+            <td>Rp 2.100.000</td>
+            <td>Kayu mahoni, Kaca tempered, Rak besi</td>
+          </tr>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">lightbulb</span>Lampu Gantung</td>
+            <td>Rp 1.950.000</td>
+            <td>Kaca bening, Besi tempa, Kabel tembaga</td>
+          </tr>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">table_bar</span>Meja Kopi</td>
+            <td>Rp 3.200.000</td>
+            <td>Kayu mahoni, Kaca tempered, Cat natural</td>
+          </tr>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">bed</span>Cozy Bedroom</td>
+            <td>Rp 8.150.000</td>
+            <td>kain flanel atau seprai katun, selimut bulu angsa atau selimut tebal, karpet tebal, dan elemen kayu atau rotan</td>
+          </tr>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">dining</span>Meja Makan</td>
+            <td>Rp 3.000.000</td>
+            <td>Kayu mahoni, Kaca tempered, Cat natural</td>
+          </tr>
+          <tr tabindex="0">
+            <td><span class="material-icons" aria-hidden="true">chair</span>Kursi Santai</td>
+            <td>Rp 1.800.000</td>
+            <td>kayu, rotan (alami atau sintetis), kain (seperti kanvas atau parasut), dan logam (biasanya besi)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 <a href="index.html">InterMade</a>. All rights reserved.</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

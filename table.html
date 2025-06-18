@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interior Products Table - Warm Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Material+Icons" rel="stylesheet" />
+<style>
+  :root {
+    --warm-bg: #f2e8dd;
+    --warm-accent1: #d9822b;
+    --warm-accent2: #a64b2a;
+    --text-primary: #442c1a;
+    --text-secondary: #6b4c32;
+    --glass-bg: rgba(255 248 240 / 0.75);
+    --glass-border: rgba(169 110 44 / 0.25);
+    --header-footer-bg: rgba(217 168 105 / 0.85);
+    --table-header-bg: #d9822b;
+    --shadow-light: rgba(169, 110, 44, 0.2);
+    --focus-outline: #d9822b;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    left: 0; right: 0;
+    height: 64px;
+    background: var(--header-footer-bg);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 20;
+  }
+  .navbar {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    user-select: none;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: 1.1px;
+  }
+  nav.desktop-nav {
+    display: flex;
+    gap: 2.5rem;
+  }
+  nav.desktop-nav a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+  }
+  nav.desktop-nav a:hover,
+  nav.desktop-nav a:focus-visible {
+    color: var(--warm-accent1);
+  }
+  nav.desktop-nav a:focus-visible {
+    outline: 3px solid var(--warm-accent1);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 32px;
+    cursor: pointer;
+  }
+  .mobile-menu-btn:focus-visible {
+    outline: 3px solid var(--warm-accent1);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  .mobile-menu {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 260px;
+    height: calc(100vh - 64px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    box-shadow: -4px 0 16px rgba(169,110,44,0.3);
+    border-left: 1px solid var(--glass-border);
+    padding: 2rem 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    z-index: 25;
+  }
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+  }
+  .mobile-menu a:hover,
+  .mobile-menu a:focus-visible {
+    background-color: var(--warm-accent1);
+    color: white;
+    outline: none;
+  }
+  .mobile-menu-close {
+    font-size: 28px;
+    color: var(--warm-accent2);
+    align-self: flex-end;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .mobile-menu-close:focus-visible {
+    outline: 3px solid var(--warm-accent1);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  main {
+    flex-grow: 1;
+    min-height: calc(100vh - 128px);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+  .table-wrapper {
+    width: 100%;
+    max-width: 960px;
+    background: rgba(255 248 240 / 0.75);
+    border-radius: 16px;
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(169 110 44 / 0.25);
+    box-shadow: 0 12px 36px rgba(169, 110, 44, 0.2);
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 600px;
+  }
+  thead tr {
+    background: var(--table-header-bg);
+    color: #fff;
+    font-weight: 700;
+  }
+  thead th {
+    text-align: left;
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: inset 0 -2px 0 0 rgba(0,0,0,0.15);
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0d9b5;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  tbody tr:hover,
+  tbody tr:focus-within {
+    background-color: #fbdba0;
+    box-shadow: 0 3px 12px rgba(217, 130, 43, 0.35);
+    outline: none;
+  }
+  tbody td {
+    padding: 16px 24px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+  }
+  tbody td:first-child,
+  thead th:first-child {
+    position: sticky;
+    left: 0;
+    background: rgba(255 248 240 / 0.75);
+    box-shadow: inset 2px 0 5px -2px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+  }
+  .material-icons {
+    vertical-align: middle;
+    font-size: 20px;
+    color: var(--warm-accent2);
+    margin-right: 6px;
+  }
+  tbody tr:focus-within {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: -2px;
+  }
+  tbody tr:focus-within td:first-child {
+    background-color: #f0b03c;
+    color: #fff;
+  }
+  @media (max-width: 1024px) {
+    nav.desktop-nav {
+      display: none;
+    }
+    .mobile-menu-btn {
+      display: inline-block;
+    }
+  }
+  @media (max-width: 640px) {
+    main {
+      padding: 1rem;
+    }
+    .table-wrapper {
+      border-radius: 12px;
+      box-shadow: 0 8px 24px var(--shadow-light);
+    }
+    table {
+      min-width: 500px;
+    }
+    thead th, tbody td {
+      padding: 12px 16px;
+    }
+    tbody td:first-child {
+      font-weight: 600;
+      background: var(--warm-accent2);
+      color: white;
+      position: relative;
+    }
+  }
+  footer {
+    position: sticky;
+    bottom: 0;
+    left: 0; right: 0;
+    background: var(--header-footer-bg);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--glass-border);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 -4px 12px var(--shadow-light);
+    user-select: none;
+    z-index: 20;
+  }
+</style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation" aria-label="Main navigation">
+        <a class="navbar-brand" href="#">InterMade</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="material-icons">menu</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto" role="menubar">
+            <li class="nav-item active" role="none">
+              <a class="nav-link" href="index.html" role="menuitem" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item" role="none">
+              <a class="nav-link" href="services.html" role="menuitem">Services</a>
+            </li>
+            <li class="nav-item" role="none">
+              <a class="nav-link" href="products.html" role="menuitem">Products</a>
+            </li>
+            <li class="nav-item" role="none">
+              <a class="nav-link" href="contact.html" role="menuitem">Contact</a>
+            </li>
+            <li class="nav-item" role="none">
+              <a class="nav-link" href="about.html" role="menuitem">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<main>
+  <section aria-label="Interior Products Table" class="table-wrapper">
+    <table role="table" aria-describedby="table-desc" tabindex="0">
+      <caption id="table-desc" style="text-align:left; padding:12px 24px; font-weight:700; color: var(--warm-accent2); font-size:1.25rem;">
+        Tabel Produk Jasa Interior dengan warna warna hangat
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Nama Produk</th>
+          <th scope="col">Harga Produk</th>
+          <th scope="col">Bahan Bahan Produk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tabindex="0">
+          <td><span class="material-icons" aria-hidden="true">weekend</span>Sofa Minimalis</td>
+          <td>Rp 4.500.000</td>
+          <td>Kayu jati, Kain beludru, Busa berkualitas</td>
+        </tr>
+        <tr tabindex="0">
+          <td><span class="material-icons" aria-hidden="true">book</span>Rak Buku</td>
+          <td>Rp 2.100.000</td>
+          <td>Kayu mahoni, Kaca tempered, Rak besi</td>
+        </tr>
+        <tr tabindex="0">
+          <td><span class="material-icons" aria-hidden="true">lightbulb</span>Lampu Gantung</td>
+          <td>Rp 1.950.000</td>
+          <td>Kaca bening, Besi tempa, Kabel tembaga</td>
+        </tr>
+        <tr tabindex="0">
+          <td><span class="material-icons" aria-hidden="true">table_bar</span>Meja Kopi</td>
+          <td>Rp 3.200.000</td>
+          <td>Kayu mahoni, Kaca tempered, Cat natural</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 <a href="index.html">InterMade</a>. All rights reserved.</p>
+  </footer>
+
+<script>
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-navigation');
+  const closeBtn = document.querySelector('.mobile-menu-close');
+  const focusableMenuItems = mobileMenu.querySelectorAll('a');
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    focusableMenuItems.forEach(a => a.tabIndex = 0);
+    focusableMenuItems[0]?.focus();
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    focusableMenuItems.forEach(a => a.tabIndex = -1);
+    menuBtn.focus();
+  }
+  menuBtn.addEventListener('click', () => {
+    if(mobileMenu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+  closeBtn.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+  focusableMenuItems.forEach(a => a.tabIndex = -1);
+</script>
+
+</body>
+</html>
+

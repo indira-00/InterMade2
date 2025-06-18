@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InterMade - Services</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #FDF6F0; 
+      color: #5B3924; 
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #D97540; 
+      text-decoration: none;
+      outline: none;
+    }
+
+    nav.navbar {
+      background: rgba(253, 231, 221, 0.95);
+      backdrop-filter: saturate(180%) blur(15px);
+      box-shadow: 0 2px 8px rgba(217, 117, 64, 0.15);
+      margin-bottom: 40px;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #A75628; 
+      transition: color 0.3s ease;
+    }
+    .navbar-brand:hover {
+      color: #D97540;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      color: #B97552; 
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-item.active .nav-link {
+      color: #D97540;
+      font-weight: 700;
+    }
+    .navbar-toggler {
+      border: none;
+      color: #D97540;
+      font-size: 28px;
+    }
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    header.page-header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #E7C9B1, #D37523);
+      color: #fff8f0;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+      user-select: none;
+    }
+    header.page-header h1 {
+      font-size: 3.4rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-shadow: 0 3px 15px rgba(163, 83, 34, 0.85);
+    }
+    header.page-header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(163, 75, 10, 0.75);
+    }
+    .services-container {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      padding: 0 20px;
+    }
+    .service-card {
+      background: #F5E9E2;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(217, 117, 64, 0.15);
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    .service-card:hover,
+    .service-card:focus-visible {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 65px rgba(217, 117, 64, 0.35);
+      text-decoration: none;
+      color: #D97540;
+    }
+    .service-icon {
+      font-size: 60px;
+      color: #D97540;
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+    .service-title {
+      font-weight: 800;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #9C6331;
+      transition: color 0.3s ease;
+    }
+    .service-description {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #6b4b31;
+      line-height: 1.5;
+    }
+    .products-button-container {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .btn-products {
+      background: linear-gradient(135deg, #D97540, #B65A1C);
+      border: none;
+      padding: 14px 48px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #fff8f0;
+      box-shadow: 0 8px 30px rgba(217, 117, 64, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-products:hover,
+    .btn-products:focus {
+      background: linear-gradient(135deg, #B65A1C, #F78143);
+      box-shadow: 0 12px 50px rgba(247, 129, 67, 0.85);
+      outline: none;
+      transform: translateY(-3px);
+    }
+    .btn-products:active {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(217, 90, 30, 0.9);
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation" aria-label="Main navigation">
+    <a class="navbar-brand" href="index.html">InterMade</a>
+    <button
+      class="navbar-toggler"
+      type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation menu"
+    >
+      <span class="material-icons">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" role="menubar">
+        <li class="nav-item" role="none"><a class="nav-link" href="index.html" role="menuitem">Home</a></li>
+        <li class="nav-item active" role="none"><a class="nav-link" href="services.html" role="menuitem" aria-current="page">Services</a></li>
+        <li class="nav-item" role="none"><a class="nav-link" href="products.html" role="menuitem">Products</a></li>
+        <li class="nav-item" role="none"><a class="nav-link" href="contact.html" role="menuitem">Contact</a></li>
+        <li class="nav-item" role="none"><a class="nav-link" href="about.html" role="menuitem">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Our Interior Services</h1>
+    <p>Creating spaces that feel warm, harmonious, and inviting – tailored just for you.</p>
+  </header>
+
+  <section class="services-container" aria-label="Interior design services">
+    <a href="custom-interior-design.html" class="service-card" tabindex="0">
+      <span class="material-icons service-icon" aria-hidden="true">brush</span>
+      <h2 class="service-title">Custom Interior Design</h2>
+      <p class="service-description">Personalized solutions that perfectly match your taste and lifestyle.</p>
+    </a>
+
+    <a href="home-renovation.html" class="service-card" tabindex="0">
+      <span class="material-icons service-icon" aria-hidden="true">construction</span>
+      <h2 class="service-title">Home Renovation</h2>
+      <p class="service-description">Transform your space with expert renovation services that preserve harmony.</p>
+    </a>
+
+    <a href="color-consultation.html" class="service-card" tabindex="0">
+      <span class="material-icons service-icon" aria-hidden="true">palette</span>
+      <h2 class="service-title">Color Consultation</h2>
+      <p class="service-description">Choose harmonious palettes that evoke tranquility and warmth.</p>
+    </a>
+
+    <a href="furniture-selection.html" class="service-card" tabindex="0">
+      <span class="material-icons service-icon" aria-hidden="true">weekend</span>
+      <h2 class="service-title">Furniture Selection</h2>
+      <p class="service-description">Handpick quality furniture that enhances space harmony.</p>
+    </a>
+
+    <a href="greenery-decor.html" class="service-card" tabindex="0">
+      <span class="material-icons service-icon" aria-hidden="true">emoji_nature</span>
+      <h2 class="service-title">Greenery & Decor</h2>
+      <p class="service-description">Bring life and serenity with plants and natural decor.</p>
+    </a>
+  </section>
+
+  <div class="products-button-container">
+    <a href="products.html" class="btn-products" aria-label="Go to Products page">View Our Products</a>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

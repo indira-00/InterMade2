@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Furniture Selection - InterMade</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #FDF6F0;
+      color: #5B3924;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #D97540;
+      text-decoration: none;
+    }
+    nav.navbar {
+      background: rgba(253, 231, 221, 0.95);
+      backdrop-filter: saturate(180%) blur(15px);
+      box-shadow: 0 2px 8px rgba(217, 117, 64, 0.15);
+      margin-bottom: 40px;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #A75628;
+      transition: color 0.3s ease;
+    }
+    .navbar-brand:hover {
+      color: #D97540;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      color: #B97552;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-item.active .nav-link {
+      color: #D97540;
+      font-weight: 700;
+    }
+    .navbar-toggler {
+      border: none;
+      color: #D97540;
+      font-size: 28px;
+    }
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    header.page-header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #E7C9B1, #D37523);
+      color: #fff8f0;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+      user-select: none;
+    }
+    header.page-header h1 {
+      font-size: 3.4rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-shadow: 0 3px 15px rgba(163, 83, 34, 0.85);
+    }
+    header.page-header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(163, 75, 10, 0.75);
+    }
+    .content-container {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #6B4B31;
+      user-select: none;
+    }
+    .content-container p + p {
+      margin-top: 1.3rem;
+    }
+    .decor-image {
+      display: block;
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      margin: 24px auto 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(217, 117, 64, 0.25);
+    }
+    footer {
+      background: #D97540;
+      padding: 28px 0;
+      color: #FFF6ED;
+      text-align: center;
+      font-size: 1rem;
+      user-select: none;
+      letter-spacing: 0.03em;
+    }
+    footer a {
+      color: #FFF6ED;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    footer a:hover {
+      color: #FFE5C4;
+    }
+    @media (max-width: 768px) {
+      header.page-header h1 {
+        font-size: 2.6rem;
+      }
+      header.page-header p {
+        font-size: 1.1rem;
+        max-width: 90%;
+      }
+      .content-container {
+        font-size: 1rem;
+      }
+      .decor-image {
+        margin: 16px auto 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation" aria-label="Main navigation">
+    <a class="navbar-brand" href="index.html">InterMade</a>
+    <button
+      class="navbar-toggler"
+      type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation menu"
+    >
+      <span class="material-icons">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" role="menubar">
+        <li class="nav-item" role="none"><a class="nav-link" href="index.html" role="menuitem">Home</a></li>
+        <li class="nav-item active" role="none"><a class="nav-link" href="services.html" role="menuitem" aria-current="page">Services</a></li>
+        <li class="nav-item" role="none"><a class="nav-link" href="products.html" role="menuitem">Products</a></li>
+        <li class="nav-item" role="none"><a class="nav-link" href="contact.html" role="menuitem">Contact</a></li>
+        <li class="nav-item" role="none"><a class="nav-link" href="about.html" role="menuitem">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Furniture Selection</h1>
+    <p>Pilih furnitur berkualitas yang meningkatkan keharmonisan ruang.</p>
+  </header>
+
+  <main class="content-container">
+    <img src="c:\Users\user\Pictures\furniture.png" alt="Warm wooden furniture pieces in cozy interior" class="decor-image" />
+    <p><strong>Furniture Selection</strong> Layanan kami memastikan Anda memilih furnitur berkualitas dengan warna hangat yang meningkatkan keharmonisan dan kenyamanan ruang Anda. Kami memilih sendiri barang-barang yang melengkapi gaya interior dan preferensi pribadi Anda dengan sempurna. </p>
+    <p>Kami membantu Anda menemukan furnitur yang menyeimbangkan estetika dan fungsi - mulai dari sofa dan kursi yang elegan hingga lemari dan meja yang cantik. Rekomendasi kami berfokus pada warna-warna hangat, bahan-bahan alami, dan desain yang tak lekang oleh waktu untuk menciptakan tampilan yang kohesif.</p>
+    <p>Biarkan kami memandu Anda melalui pilihan yang membuat tempat tinggal atau ruang kerja Anda menarik, nyaman, dan unik milik Anda.</p>
+    <p>Bekerja sama dengan pengrajin dan merek tepercaya, kami memastikan ketahanan dan keahlian yang layak untuk rumah Anda.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 <a href="index.html">InterMade</a>. All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

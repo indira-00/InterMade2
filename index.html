@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InterMate - Harmonious & Warm Spaces</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #FDF6F0; 
+      color: #5B3924; 
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #D97540;
+      text-decoration: none;
+    }
+
+    #loading {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #F5E9E2; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+      color: #e78f31; 
+      font-weight: 700;
+      font-size: 2rem;
+      user-select: none;
+      transition: opacity 0.5s ease;
+    }
+    #loading.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-ring {
+      --size: 96px;
+      width: var(--size);
+      height: var(--size);
+      border: 8px solid rgba(217, 117, 64, 0.3);
+      border-top: 8px solid #d97d40;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+      margin-bottom: 24px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
+    nav.navbar {
+      background: rgba(253, 231, 221, 0.95);
+      backdrop-filter: saturate(180%) blur(15px);
+      box-shadow: 0 2px 8px rgba(217, 117, 64, 0.15);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #A75628; 
+      transition: color 0.3s ease;
+    }
+    .navbar-brand:hover {
+      color: #D97540;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      color: #B97552; 
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-item.active .nav-link {
+      color: #D97540; 
+      font-weight: 700;
+    }
+    .navbar-toggler {
+      border: none;
+      color: #D97540;
+      font-size: 28px;
+    }
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    header.hero {
+      min-height: 90vh;
+      background: linear-gradient(135deg, #E7C9B1, #D37523);
+      background-image:
+        linear-gradient(135deg, #E7C9B1, #D37523);
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-position: center center;
+      color: #fff8f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+    }
+    header.hero h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 14px rgba(163, 83, 34, 0.85);
+    }
+    header.hero p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(163, 75, 10, 0.75);
+    }
+    header.hero .btn-primary {
+      background: linear-gradient(135deg, #D97540, #B65A1C);
+      border: none;
+      padding: 16px 48px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(217, 117, 64, 0.7);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #FAF2EC;
+    }
+    header.hero .btn-primary:hover,
+    header.hero .btn-primary:focus {
+      background: linear-gradient(135deg, #B65A1C, #F78143);
+      box-shadow: 0 14px 50px rgba(247, 129, 67, 0.85);
+      transform: translateY(-4px);
+      outline: none;
+      color: #fff;
+    }
+    header.hero .btn-primary:active {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(217, 90, 30, 0.9);
+    }
+
+    
+    main {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      color: #5B3924;
+    }
+    main h2.section-title {
+      font-weight: 900;
+      font-size: 2.8rem;
+      margin-bottom: 48px;
+      text-align: center;
+      color: #9C6331;
+      text-shadow: 0 2px 6px rgba(185, 120, 63, 0.7);
+    }
+
+    
+    .carousel {
+      border-radius: 20px;
+      box-shadow: 0 30px 85px rgba(217, 117, 64, 0.3);
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+    .carousel-item img {
+      height: 480px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      border-radius: 20px;
+      filter: brightness(0.9);
+    }
+    .carousel-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.7));
+      background-color: #D97540;
+      border-radius: 50%;
+    }
+
+    section.cta {
+      background: linear-gradient(135deg, #F3DECC, #D97540);
+      padding: 56px 24px;
+      border-radius: 20px;
+      color: #5B3924;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(217, 117, 64, 0.45);
+      max-width: 900px;
+      margin: 0 auto 80px;
+      user-select: none;
+    }
+    section.cta h3 {
+      font-weight: 900;
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 1px 4px rgba(185, 120, 63, 0.6);
+    }
+    section.cta p {
+      font-weight: 400;
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      text-shadow: 0 1px 2px rgba(185, 120, 63, 0.3);
+    }
+    section.cta .btn {
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 14px 50px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background-color: #EAB57A;
+      color: #5B3924;
+      box-shadow: 0 6px 20px rgba(234, 181, 122, 0.5);
+      transition: all 0.3s ease;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
+    section.cta .btn:hover,
+    section.cta .btn:focus {
+      background-color: #D97540;
+      color: #FFF6ED;
+      box-shadow: 0 12px 40px rgba(217, 117, 64, 0.8);
+      outline: none;
+      transform: translateY(-3px);
+    }
+    section.cta .btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(217, 117, 64, 0.7);
+    }
+
+    footer {
+      background: #D97540;
+      padding: 28px 0;
+      color: #FFF6ED;
+      text-align: center;
+      font-size: 1rem;
+      user-select: none;
+      letter-spacing: 0.03em;
+    }
+    footer a {
+      color: #FFF6ED;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    footer a:hover {
+      color: #FFE5C4;
+    }
+
+    @media (max-width: 768px) {
+      header.hero h1 {
+        font-size: 2.6rem;
+      }
+      header.hero p {
+        font-size: 1.3rem;
+        max-width: 90%;
+      }
+    }
+    @media (max-width: 480px) {
+      header.hero .btn-primary {
+        padding: 14px 30px;
+        font-size: 1.1rem;
+      }
+      main {
+        padding: 40px 16px;
+      }
+      section.cta h3 {
+        font-size: 2rem;
+      }
+      section.cta p {
+        font-size: 1.1rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loading" class="loading" role="alert" aria-live="assertive" aria-label="Loading content">
+    <div class="loader-ring" aria-hidden="true"></div>
+    Memuat konten, harap tunggu...
+  </div>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" role="navigation" aria-label="Main navigation">
+    <a class="navbar-brand" href="#">InterMade</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="material-icons">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto" role="menubar">
+        <li class="nav-item active" role="none">
+          <a class="nav-link" href="index.html" role="menuitem" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="services.html" role="menuitem">Services</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="products.html" role="menuitem">Products</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="contact.html" role="menuitem">Contact</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="about.html" role="menuitem">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero" tabindex="-1">
+    <div class="container">
+      <h1>Transform Your Space</h1>
+      <p>Layanan desain interior profesional untuk mempercantik rumah dan kantor Anda dengan gaya dan kenyamanan.</p>
+      <a href="services.html" class="btn btn-primary" role="button" aria-label="Explore services">Explore Our Services</a>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="section-title" id="featuredProjects">Featured Projects</h2>
+
+    <div
+      id="imageSlider"
+      class="carousel slide"
+      data-ride="carousel"
+      aria-roledescription="carousel"
+      aria-label="Interior designs image slider"
+      aria-labelledby="featuredProjects"
+    >
+      <ol class="carousel-indicators">
+        <li data-target="#imageSlider" data-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
+        <li data-target="#imageSlider" data-slide-to="1" aria-label="Slide 2"></li>
+        <li data-target="#imageSlider" data-slide-to="2" aria-label="Slide 3"></li>
+      </ol>
+      <div class="carousel-inner" role="list">
+        <div class="carousel-item active" role="listitem">
+          <img src="c:\Users\user\Pictures\warm living room.jpg" class="d-block w-100" alt="Warm living room interior with natural light and cozy textures" />
+        </div>
+        <div class="carousel-item" role="listitem">
+          <img src="c:\Users\user\Pictures\cozy-dark-bedroom.jpg" class="d-block w-100" alt="Cozy bedroom design with earth tones and soft textiles" />
+        </div>
+        <div class="carousel-item" role="listitem">
+          <img src="c:\Users\user\Pictures\office.jpg" class="d-block w-100" alt="Inviting office space with warm wood and handmade decor" />
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#imageSlider" role="button" data-slide="prev" aria-label="Previous slide">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#imageSlider" role="button" data-slide="next" aria-label="Next slide">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <section class="cta" aria-label="Why choose us section">
+      <h3>Why Choose Us?</h3>
+      <p>Kami memberikan solusi desain yang dipersonalisasi sesuai kebutuhan Anda dengan semangat, kreativitas, dan perhatian terhadap detail.</p>
+      <a href="contact.html" class="btn" role="button" aria-label="Contact us">Get in Touch</a>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 <a href="index.html">InterMade</a>. All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loading');
+      loader.classList.add('hide');
+      setTimeout(() => loader.style.display = 'none', 600);
+    });
+  </script>
+</body>
+</html>
